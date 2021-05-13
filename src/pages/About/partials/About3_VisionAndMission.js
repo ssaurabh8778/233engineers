@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./About3_VisionAndMission.css";
 import { Card, Paper, Grid, Typography } from "@material-ui/core";
 
-function Home2({ data }) {
+export default ({ data }) => {
   const [about3_vision_heading, set_about3_vision_heading] = useState("");
 
   const [about3_vision_content, set_about3_vision_content] = useState("");
@@ -37,7 +37,7 @@ function Home2({ data }) {
     if (data) {
       aboutUs.map((item) => item.method(data[item.label]));
     }
-  }, [data]);
+  }, [data, aboutUs]);
   return (
     <Paper>
       <h1 style={{ width: "100%", margin: "10px" }}>Vision & Mission</h1>
@@ -101,6 +101,4 @@ function Home2({ data }) {
       </Grid>
     </Paper>
   );
-}
-
-export default Home2;
+};

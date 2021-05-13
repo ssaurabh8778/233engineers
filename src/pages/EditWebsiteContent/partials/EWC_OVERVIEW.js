@@ -16,16 +16,13 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
+import DeleteIcon from "@material-ui/icons/Delete";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
 import firebase from "../../../firebase";
 import dateFormat from "dateformat";
-import DeleteIcon from "@material-ui/icons/Delete";
-import { useAuth } from "../../../AuthContext";
 import { sectorList } from "../../../sectorList";
-import { TrainRounded } from "@material-ui/icons";
-import PROJECT_DETAILS from "./PROJECT_DETAILS";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,42 +36,16 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-//ProjectDetails section of admin dashboard
 export default () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  const [projectOpen, setProjectOpen] = React.useState(false);
   const [reload, setReload] = useState(false);
-  const [createdBy, setCreatedBy] = useState("admin");
-  const [creatorId, setCreatorId] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [heading, setHeading] = useState("");
+  const [content, setContent] = useState("");
   const [imgUrl, setImgUrl] = useState("");
+  const [topImgUrl, setTopImgUrl] = useState("");
   const [sector, setSector] = useState("Select Sector");
-  const [availableFunds, setAvailableFunds] = useState("");
-  const [phone, setPhone] = useState("");
   const [rowData, setRowData] = useState("");
-  const [projectDetails, setProjectDetails] = useState();
-  const { currentUser } = useAuth();
-
-  useEffect(() => {
-    if (currentUser) {
-      setCreatorId(currentUser.uid);
-      firebase
-        .database()
-        .ref("projects")
-        .get()
-        .then((snapshot) => {
-          console.log(snapshot.val());
-          let data = [];
-          for (let item in snapshot.val()) {
-            data.push(snapshot.val()[item]);
-          }
-
-          setRowData(data);
-        });
-    }
-  }, [currentUser, reload]);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -82,22 +53,17 @@ export default () => {
 
   const saveDetails = (e) => {
     var dateNow = Date.now();
-    var pid = Date.now();
     firebase
       .database()
-      .ref("projects/" + pid)
+      .ref("websiteContent/overview/" + dateNow)
       .set(
         {
-          pid: pid,
-          createdOn: dateFormat(dateNow),
-          createdBy,
-          creatorId,
-          title,
-          description,
-          imgUrl,
+          ref: dateNow,
+          heading,
+          content,
           sector,
-          availableFunds,
-          phone,
+          imgUrl,
+          topImgUrl,
         },
         (error) => {
           if (error) {
@@ -112,6 +78,22 @@ export default () => {
       );
   };
 
+  useEffect(() => {
+    firebase
+      .database()
+      .ref("websiteContent/overview")
+      .get()
+      .then((snapshot) => {
+        console.log(snapshot.val());
+        let data = [];
+        for (let item in snapshot.val()) {
+          data.push(snapshot.val()[item]);
+        }
+
+        setRowData(data);
+      });
+  }, [reload]);
+
   const BtnCellRenderer = (props) => {
     return (
       <DeleteIcon
@@ -119,7 +101,7 @@ export default () => {
         onClick={() => {
           firebase
             .database()
-            .ref("projects/" + props.data.pid)
+            .ref("websiteContent/overview/" + props.data.ref)
             .remove();
           alert(JSON.stringify(props.data));
         }}
@@ -129,11 +111,9 @@ export default () => {
   const gridOptions = {
     // enable sorting on 'name' and 'age' columns only
     columnDefs: [
-      { field: "createdOn", sortable: true, filter: true },
-      { field: "createdBy", sortable: true, filter: true },
-      { field: "title", sortable: true, filter: true, flex: "1" },
+      { field: "heading", sortable: true, filter: true },
+      { field: "content", sortable: true, filter: true, flex: 1 },
       { field: "sector", sortable: true, filter: true },
-      { field: "availableFunds", sortable: true, filter: true },
       { cellRenderer: "btnCellRenderer", minWidth: 150 },
     ],
     frameworkComponents: {
@@ -151,7 +131,7 @@ export default () => {
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>Projects</Typography>
+          <Typography>Sector Pages - Overview</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <div
@@ -172,7 +152,7 @@ export default () => {
               }}
             >
               <Button variant="contained" onClick={handleClickOpen}>
-                + Add Project
+                + Add Overview
               </Button>
             </div>
             <div
@@ -182,10 +162,6 @@ export default () => {
               <AgGridReact
                 gridOptions={gridOptions}
                 rowData={rowData}
-                onRowDoubleClicked={(e) => {
-                  setProjectDetails(e.data);
-                  setProjectOpen(true);
-                }}
               ></AgGridReact>
             </div>
           </div>
@@ -235,61 +211,39 @@ export default () => {
             <TextField
               margin="dense"
               id="outlined-basic"
-              style={{ marginTop: "25px" }}
-              label={"Title"}
+              label={"Heading"}
               variant="outlined"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="ewc1--textInput"
-            />
-
-            <TextField
-              margin="dense"
-              id="outlined-basic"
-              multiline
-              rows={5}
-              label={"Brief Description"}
-              variant="outlined"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              value={heading}
+              onChange={(e) => setHeading(e.target.value)}
               className="ewc1--textInput"
             />
             <TextField
               margin="dense"
               id="outlined-basic"
-              label={"Funds Available"}
+              label={"Content"}
               variant="outlined"
-              value={availableFunds}
-              onChange={(e) => setAvailableFunds(e.target.value)}
+              value={content}
+              onChange={(e) => setContent(e.target.value)}
               className="ewc1--textInput"
             />
             <TextField
               margin="dense"
               id="outlined-basic"
-              label={"Phone Number"}
+              label={"Image URL"}
               variant="outlined"
-              value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              value={imgUrl}
+              onChange={(e) => setImgUrl(e.target.value)}
               className="ewc1--textInput"
             />
-          </Dialog>
-          <Dialog fullScreen open={projectOpen}>
-            <AppBar className={classes.appBar}>
-              <Toolbar>
-                <IconButton
-                  edge="start"
-                  color="inherit"
-                  onClick={() => setProjectOpen(false)}
-                  aria-label="close"
-                >
-                  <CloseIcon />
-                </IconButton>
-                <Typography variant="h6" className={classes.title}>
-                  Project Details
-                </Typography>
-              </Toolbar>
-            </AppBar>
-            <PROJECT_DETAILS projectDetails={projectDetails} />
+            <TextField
+              margin="dense"
+              id="outlined-basic"
+              label={"Top Image URL"}
+              variant="outlined"
+              value={topImgUrl}
+              onChange={(e) => setTopImgUrl(e.target.value)}
+              className="ewc1--textInput"
+            />
           </Dialog>
         </AccordionDetails>
       </Accordion>

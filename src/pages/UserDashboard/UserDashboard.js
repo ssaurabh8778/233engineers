@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
+import React from "react";
+import { Paper, Grid } from "@material-ui/core";
 import UD1_UserProfile from "./partials/UD1_UserProfile";
 import UD2_projectEarnings from "./partials/UD2_projectEarnings";
 import UD3_projectInvites from "./partials/UD3_projectInvites";
 import UD4_projectsFeed from "./partials/UD4_projectsFeed";
 import UD5_newsFeed from "./partials/UD5_newsFeed";
-import firebase from "../../firebase";
 
 export default function FullWidthGrid() {
   return (

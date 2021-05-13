@@ -1,12 +1,8 @@
 import React from "react";
-import "../../App.css";
-import Cards from "../../components/Cards";
-import Footer from "../../components/Footer";
 import Home1_carousal from "./partials/Home1_carousal";
 import Home2_aboutUs from "./partials/Home2_aboutUs";
 import Home3_whyChooseUs from "./partials/Home3_whyChooseUs";
 import Home4 from "./partials/Home4";
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 
 export default () => {
@@ -16,6 +12,7 @@ export default () => {
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
+        backgroundColor: "#f8f8f8",
       }}
     >
       <Grid style={{ maxWidth: "1280px" }} container spacing={3}>

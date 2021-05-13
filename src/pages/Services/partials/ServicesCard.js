@@ -1,19 +1,31 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./ServicesCard.css";
-import { Card, Paper } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
+import { Link } from "react-router-dom";
+import zIndex from "@material-ui/core/styles/zIndex";
 
-function ServicesCard(props) {
+export default (props) => {
   return (
-    <Paper elevation={5} className="servicesCard--cardContainer">
-      <img
-        src={props.src}
-        alt="Travel Image"
-        className="servicesCard--cardImage"
-      />
-      <h1> {props.sectorName}</h1>
-    </Paper>
+    <Link
+      to={`servicepage/${props.sectorName}`}
+      style={{ textDecoration: "none" }}
+    >
+      <Paper elevation={5} className="servicesCard--cardContainer">
+        <div
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url(${props.src})`,
+            backgroundSize: "cover",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "flex-end",
+          }}
+          alt="Travel Image"
+          className="servicesCard--cardImage"
+        ></div>
+        <h1 style={{ textDecoration: "none", textDecorationLine: "none" }}>
+          {props.sectorName}
+        </h1>
+      </Paper>
+    </Link>
   );
-}
-
-export default ServicesCard;
+};

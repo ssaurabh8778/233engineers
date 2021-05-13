@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { makeStyles, createStyles, Theme } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
 import AD1_DetailsOfUsers from "./partitials/AD1_DetailsOfUsers";
 import AD2_Projects from "./partitials/AD2_Projects";
 import AD3_NewsAndHighlights from "./partitials/AD3_NewsAndHighlights";
-import firebase from "../../firebase";
-import { Typography, Card } from "@material-ui/core";
+import { Paper, Grid, Typography, Card } from "@material-ui/core";
 import LineStyleIcon from "@material-ui/icons/LineStyle";
 import ForumIcon from "@material-ui/icons/Forum";
 import { Link } from "react-router-dom";
+import firebase from "../../firebase";
 import "./AdminDashboard.css";
-//
-export default function FullWidthGrid() {
+
+export default () => {
   const [userData, setUserData] = useState();
   const [totalUsers, setTotalUsers] = useState();
   useEffect(() => {
@@ -102,4 +99,4 @@ export default function FullWidthGrid() {
       </Grid>
     </div>
   );
-}
+};

@@ -4,16 +4,14 @@ import ScrollMenu from "react-horizontal-scrolling-menu";
 import { Card, Typography, Paper } from "@material-ui/core";
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 
-function Home4() {
+export default () => {
   return (
     <Paper className="about4--container">
       <h1>Leadership</h1>
       <HorizontalNewsScroll />
     </Paper>
   );
-}
-
-export default Home4;
+};
 
 // list of items
 const list = [

@@ -2,7 +2,7 @@ import React from "react";
 import "./Home2_aboutUs.css";
 import { Card, Paper, Grid } from "@material-ui/core";
 
-function Home2() {
+export default () => {
   return (
     <Grid item xs={12} container>
       <Grid
@@ -65,6 +65,4 @@ function Home2() {
       </Grid>
     </Grid>
   );
-}
-
-export default Home2;
+};

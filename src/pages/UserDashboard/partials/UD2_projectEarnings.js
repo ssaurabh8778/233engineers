@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import ScrollMenu from "react-horizontal-scrolling-menu";
+import React from "react";
 import "./UD2_projectEarnings.css";
-import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
-import { Paper, Typography } from "@material-ui/core";
+import { Paper } from "@material-ui/core";
 
 export default () => {
   return (

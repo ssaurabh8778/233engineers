@@ -1,22 +1,12 @@
 import React, { useState } from "react";
 import "./LogIn.css";
-import {
-  Container,
-  Paper,
-  Grid,
-  Typography,
-  TextField,
-  Button,
-} from "@material-ui/core";
-import firebase from "../../firebase";
-import { useAuth } from "../../AuthContext";
-
+import { Paper, Grid, Typography, TextField, Button } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import firebase from "../../firebase";
 
 export default () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
-  const { currentUser } = useAuth();
 
   const logInWithEmailPassword = (e) => {
     e.preventDefault();

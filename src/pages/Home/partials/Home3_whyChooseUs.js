@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./Home3_whyChooseUs.css";
 import { Card, Paper, Grid } from "@material-ui/core";
 import firebase from "../../../firebase";
+import "./Home3_whyChooseUs.css";
 
-function Home3() {
+export default () => {
   const [home1_aboutUs_card1, set_home1_aboutUs_card1] = useState("");
   const [home1_aboutUs_card2, set_home1_aboutUs_card2] = useState("");
   const [home2_whyChooseUs_card1, set_home2_whyChooseUs_card1] = useState("");
@@ -64,23 +64,23 @@ function Home3() {
           style={{ display: "flex", alignItmes: "center", width: "100%" }}
         >
           <div className="home3--insideContainer1">
-            <img src="https://picsum.photos/1000" />
+            <img src="https://picsum.photos/1000" alt="" />
             <h1>Why Choose Us?</h1>
           </div>
         </Grid>
         <div className="home3--insideContainer2">
           <Card elevation="5" className="home3--insideContainer2--card">
-            <img src="233_images/1.svg" />
+            <img src="233_images/1.svg" alt="" />
             <h1>Diverse Expertise</h1>
             <p>{home2_whyChooseUs_card1}</p>
           </Card>
           <Card elevation="5" className="home3--insideContainer2--card">
-            <img src="233_images/2.svg" />
+            <img src="233_images/2.svg" alt="" />
             <h1>Purpose Over Profit</h1>
             <p>{home2_whyChooseUs_card2}</p>
           </Card>
           <Card elevation="5" className="home3--insideContainer2--card">
-            <img src="233_images/3.svg" />
+            <img src="233_images/3.svg" alt="" />
             <h1>The Joy of Philanthropy</h1>
             <p>{home2_whyChooseUs_card3}</p>
           </Card>
@@ -89,6 +89,4 @@ function Home3() {
       </Paper>
     </Grid>
   );
-}
-
-export default Home3;
+};

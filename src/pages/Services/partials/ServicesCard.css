@@ -11,29 +11,34 @@
 }
 
 .servicesCard--cardImage {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.527), rgba(0, 0, 0, 0.5));
   height: 250px;
   width: 350px;
   object-fit: cover;
   margin: 5px;
-  z-index: -1;
   border-radius: 5px;
+  opacity: 0.9;
 }
 
 .servicesCard--cardContainer > h1 {
   width: 350px;
   height: 75px;
-  margin-top: -75px;
-  align-self: center;
-  justify-self: center;
-  background-color: lightblue;
-  opacity: 0.8;
+  margin-top: -85px;
+  padding-top: 10px;
+  color: #fff;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #261a0d;
+  opacity: 0.9;
   z-index: 1;
 }
 
 .servicesCard--cardImage:hover {
-  height: 260px;
-  width: 360px;
+  height: 250px;
+  width: 350px;
   object-fit: cover;
   margin: 5px;
-  z-index: -1;
+  border-radius: 5px;
+  opacity: 1;
+  transition: 0.3s;
 }

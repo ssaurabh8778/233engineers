@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import "./Home4.css";
 import ScrollMenu from "react-horizontal-scrolling-menu";
 import { Card, Typography, Paper } from "@material-ui/core";
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 import firebase from "../../../firebase";
+import "./Home4.css";
 
-function Home4() {
+export default () => {
   return (
     <Paper elevation="3" className="home4--container">
       <div className="home4--conatiner--header">
@@ -15,9 +15,7 @@ function Home4() {
       <HorizontalNewsScroll />
     </Paper>
   );
-}
-
-export default Home4;
+};
 
 // list of items
 const list = [

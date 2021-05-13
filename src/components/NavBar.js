@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Typography } from "@material-ui/core";
 import "./NavBar.css";
@@ -14,7 +14,6 @@ import { useAuth } from "../AuthContext";
 
 export default function NavBar() {
   const [click, setClick] = useState(false);
-  const [button, setButton] = useState(false);
   const [aboutDropdown, setAboutDropdown] = useState(false);
   const [sectorsDropdown, setSectorsDropdown] = useState(false);
   const [careersDropdown, setCareersDropdown] = useState(false);
@@ -53,6 +52,7 @@ export default function NavBar() {
                 backgroundColor: "#fff",
               }}
               src="/233_images/logo.svg"
+              alt=""
             />
             233 ENGINEERS
           </Link>

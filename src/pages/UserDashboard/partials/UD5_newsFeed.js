@@ -5,16 +5,14 @@ import { Card, Typography, Paper } from "@material-ui/core";
 import { ArrowBackIos, ArrowForwardIos } from "@material-ui/icons";
 import firebase from "../../../firebase";
 
-function Home4() {
+export default () => {
   return (
     <Paper className="ud5--container">
       <h3>News & Highlights</h3>
       <HorizontalNewsScroll />
     </Paper>
   );
-}
-
-export default Home4;
+};
 
 // list of items
 

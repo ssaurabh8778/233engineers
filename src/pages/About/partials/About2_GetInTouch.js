@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./About2_GetInTouch.css";
-import { Paper, Card, Grid, Button } from "@material-ui/core";
+import { Paper, Card, Button } from "@material-ui/core";
 
-function About2_GetInTouch({ data }) {
+//GetInTouch section of AboutUs page
+export default ({ data }) => {
   const [about2_getInTouch_card1, set_about2_getInTouch_card1] = useState("");
-
   const [about2_getInTouch_card2, set_about2_getInTouch_card2] = useState("");
-
   const [about2_getInTouch_card3, set_about2_getInTouch_card3] = useState("");
 
   const aboutUs = [
@@ -36,7 +35,7 @@ function About2_GetInTouch({ data }) {
       <h1 style={{ margin: "10px" }}>Get In Touch</h1>
       <div elevation="3" className="about2--container">
         <Card elevation="5" className="about2--card">
-          <img src="/233_images/consulting2.png" alt="Travel Image" />
+          <img src="/233_images/consulting2.png" alt="" />
           <div className="about2--textContainer">
             <h3>Consulting & Advisory</h3>
             <p style={{ color: "#595959" }}>{about2_getInTouch_card1}</p>
@@ -48,7 +47,7 @@ function About2_GetInTouch({ data }) {
           </div>
         </Card>
         <Card elevation="5" className="about2--card">
-          <img src="/233_images/biogas.png" alt="Travel Image" />
+          <img src="/233_images/biogas.png" alt="" />
           <div className="about2--textContainer">
             <h3>Engineering Project</h3>
             <p style={{ color: "#595959" }}>{about2_getInTouch_card2}</p>
@@ -60,7 +59,7 @@ function About2_GetInTouch({ data }) {
           </div>
         </Card>
         <Card elevation="5" className="about2--card">
-          <img src="/233_images/mentoring1.png" alt="Travel Image" />
+          <img src="/233_images/mentoring1.png" alt="" />
           <div className="about2--textContainer">
             <h3>Mentoring</h3>
             <p style={{ color: "#595959" }}>{about2_getInTouch_card3}</p>
@@ -77,6 +76,4 @@ function About2_GetInTouch({ data }) {
       </div>
     </Paper>
   );
-}
-
-export default About2_GetInTouch;
+};

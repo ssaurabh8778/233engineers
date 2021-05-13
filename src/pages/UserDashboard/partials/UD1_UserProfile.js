@@ -1,5 +1,4 @@
-import React, { Component, useEffect, useState } from "react";
-import ScrollMenu from "react-horizontal-scrolling-menu";
+import React, { useEffect, useState } from "react";
 import "./UD1_UserProfile.css";
 import {
   Paper,
@@ -14,6 +13,7 @@ import {
 import firebase from "../../../firebase";
 import { useAuth } from "../../../AuthContext";
 import SnackBar from "../../../components/SnackBar";
+import { sectorList } from "../../../sectorList";
 
 export default (props) => {
   const [fullName, setFullName] = useState("");
@@ -26,6 +26,7 @@ export default (props) => {
   const [degree, setDegree] = useState("");
   const [snackBarVisible, setSnackBarVisible] = useState(false);
   const [snackBarMessage, setSnackBarMessage] = useState("");
+  const [sector, setSector] = useState("Select Sector");
   const { currentUser } = useAuth();
 
   useEffect(() => {
@@ -51,6 +52,9 @@ export default (props) => {
           setOtherDetails(
             snapshot.val().otherDetails ? snapshot.val().otherDetails : ""
           );
+          setSector(
+            snapshot.val().sector ? snapshot.val().sector : "Select Sector"
+          );
         });
     }
   }, [currentUser]);
@@ -70,6 +74,8 @@ export default (props) => {
             country,
             profession,
             otherDetails,
+            sector,
+            uid: currentUser.uid,
           },
           (error) => {
             if (error) {
@@ -202,6 +208,23 @@ export default (props) => {
         variant="outlined"
         className="ud1--textInput"
       />
+      <Select
+        margin="dense"
+        style={{ margin: "10px", marginTop: "25px" }}
+        displayEmpty={true}
+        renderValue={() => {
+          return sector;
+        }}
+        labelId="demo-simple-select-outlined-label"
+        id="demo-simple-select-outlined"
+        value={sector}
+        onChange={(e) => setSector(e.target.value)}
+        autoWidth
+      >
+        {sectorList.map((sector) => (
+          <MenuItem value={sector.sectorName}>{sector.sectorName}</MenuItem>
+        ))}
+      </Select>
       <Box m={1}>
         <Button
           onClick={() => updateUserDetails()}

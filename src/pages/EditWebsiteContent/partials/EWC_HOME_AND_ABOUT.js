@@ -13,10 +13,6 @@ import {
 import firebase from "firebase";
 import "firebase/firestore";
 import "firebase/auth";
-import EWC_HOME_AND_ABOUT from "./partials/EWC_HOME_AND_ABOUT";
-import EWC_KEY_PEOPLE from "./partials/EWC_KEY_PEOPLE";
-import EWC_OVERVIEW from "./partials/EWC_OVERVIEW";
-import EWC_KEY_PROJECTS from "./partials/EWC_KEY_PROJECTS";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -193,27 +189,97 @@ export default () => {
   const classes = useStyles();
 
   return (
-    <Grid
-      style={{ width: "100vw", display: "flex", justifyContent: "center" }}
-      container
-      spacing={3}
+    <div
+      style={{
+        display: "flex",
+        flex: "1",
+        flexDirection: "column",
+        marginTop: "15px",
+        width: "100%",
+      }}
     >
-      <Grid
-        style={{
-          display: "flex",
-          flex: "1",
-          flexDirection: "column",
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes.heading}>Home</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              flexDirection: "column",
+            }}
+          >
+            {home.map((item) => (
+              <TextField
+                margin="dense"
+                id="outlined-basic"
+                style={{ backgroundColor: "lightyellow" }}
+                multiline
+                rows={3}
+                label={item.label}
+                variant="outlined"
+                value={item.value}
+                onChange={(e) => item.method(e.target.value)}
+                className="ewc1--textInput"
+              />
+            ))}
 
-          alignSelf: "center",
-        }}
-        item
-        xs={9}
-      >
-        <EWC_HOME_AND_ABOUT />
-        <EWC_OVERVIEW />
-        <EWC_KEY_PROJECTS />
-        <EWC_KEY_PEOPLE />
-      </Grid>
-    </Grid>
+            <Button
+              onClick={() => updateHomeData()}
+              variant="contained"
+              color="primary"
+            >
+              Update the content of the HomePage
+            </Button>
+          </div>
+        </AccordionDetails>
+      </Accordion>
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1a-content"
+          id="panel1a-header"
+        >
+          <Typography className={classes.heading}>About</Typography>
+        </AccordionSummary>
+        <AccordionDetails>
+          <div
+            style={{
+              display: "flex",
+              width: "100%",
+              flexDirection: "column",
+            }}
+          >
+            {aboutUs.map((item) => (
+              <TextField
+                margin="dense"
+                id="outlined-basic"
+                style={{ backgroundColor: "lightyellow" }}
+                multiline
+                rows={3}
+                label={item.label}
+                variant="outlined"
+                value={item.value}
+                onChange={(e) => item.method(e.target.value)}
+                className="ewc1--textInput"
+              />
+            ))}
+
+            <Button
+              onClick={() => updateAboutUsData()}
+              variant="contained"
+              color="primary"
+            >
+              Update the content of the About Us Page
+            </Button>
+          </div>
+        </AccordionDetails>
+      </Accordion>
+    </div>
   );
 };

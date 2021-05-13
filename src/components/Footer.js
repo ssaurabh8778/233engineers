@@ -1,5 +1,4 @@
 import React from "react";
-import { Button } from "@material-ui/core";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 
@@ -18,6 +17,7 @@ function Footer() {
                   backgroundColor: "#fff",
                 }}
                 src="/233_images/logo.svg"
+                alt=""
               />
               233 ENGINEERS
             </Link>

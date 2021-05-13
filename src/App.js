@@ -3,11 +3,11 @@ import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
-
 import Footer from "./components/Footer";
 import Services from "./pages/Services/Services";
 import Products from "./pages/Products";
 import SignUp from "./pages/SignUp/SignUp";
+import SupportPhilantropy from "./pages/SupportPhilantropy/SupportPhilantropy";
 import ServicePage from "./pages/Services/ServicePage";
 import LogIn from "./pages/LogIn/LogIn";
 import "fontsource-roboto";
@@ -30,10 +30,6 @@ function App() {
               <NavBar />
               <Services />
             </Route>
-            <Route path="/servicepage">
-              <NavBar />
-              <ServicePage />
-            </Route>
             <Route path="/products">
               <NavBar />
               <Products />
@@ -46,6 +42,10 @@ function App() {
               <NavBar />
               <LogIn />
             </Route>
+            <Route path="/support-philantropy">
+              <NavBar />
+              <SupportPhilantropy />
+            </Route>
             <Route path="/user-dashboard">
               <NavBar />
               <UserDashboard />
@@ -57,6 +57,10 @@ function App() {
             <Route path="/edit-website-content">
               <NavBar />
               <EditWebsiteContent />
+            </Route>
+            <Route path="/servicepage">
+              <NavBar />
+              <ServicePage />
             </Route>
             <Route path="/">
               <NavBar />

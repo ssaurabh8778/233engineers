@@ -4,12 +4,20 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
 import { Button } from "@material-ui/core";
 
-function Home1_Carousal() {
+export default () => {
+  const Background = "/233_images/signup.jpg";
   return (
     <>
       <Carousel className="home1" showThumbs={false}>
-        <div className="home1--container">
-          <video src="/videos/video2.mp4" autoPlay loop muted />
+        <div
+          style={{
+            backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.527),rgba(0, 0, 0, 0.5)), url(${Background})`,
+            backgroundSize: "cover",
+            display: "flex",
+            justifyContent: "center",
+          }}
+          className="home1--container"
+        >
           <div className="home1--insideContainer">
             <h1 className="c1-h1">
               Join Over 300 Ghanaian Engineers & Scientists
@@ -49,6 +57,4 @@ function Home1_Carousal() {
       </Carousel>
     </>
   );
-}
-
-export default Home1_Carousal;
+};

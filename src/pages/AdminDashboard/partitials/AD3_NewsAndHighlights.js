@@ -1,35 +1,24 @@
 import React, { useState, useEffect } from "react";
-import Paper from "@material-ui/core/Paper";
-import Grid from "@material-ui/core/Grid";
-import Accordion from "@material-ui/core/Accordion";
-import AccordionSummary from "@material-ui/core/AccordionSummary";
-import AccordionDetails from "@material-ui/core/AccordionDetails";
-import Typography from "@material-ui/core/Typography";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import {
+  Button,
+  TextField,
+  Dialog,
+  AppBar,
+  Toolbar,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from "@material-ui/core/";
 import { Theme, createStyles, makeStyles } from "@material-ui/core/styles";
-import { Button, TextField } from "@material-ui/core/";
-
-import Dialog from "@material-ui/core/Dialog";
-import ListItemText from "@material-ui/core/ListItemText";
-import ListItem from "@material-ui/core/ListItem";
-import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import IconButton from "@material-ui/core/IconButton";
-
 import CloseIcon from "@material-ui/icons/Close";
-import Slide from "@material-ui/core/Slide";
-
-import { AgGridColumn, AgGridReact } from "ag-grid-react";
-
+import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/dist/styles/ag-grid.css";
 import "ag-grid-community/dist/styles/ag-theme-alpine.css";
-
 import firebase from "../../../firebase";
-
 import dateFormat from "dateformat";
-//
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -43,11 +32,11 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+//News & Heighlights section of admin dashboard
 export default () => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
   const [reload, setReload] = useState(false);
-
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");

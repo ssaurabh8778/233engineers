@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Button, Paper } from "@material-ui/core";
-import Cards from "../../../components/Cards";
 import "./About1_WhoWeAre.css";
 
-function HeroSection({ data }) {
+export default ({ data }) => {
   const [about1_whoWeAre_card1, set_about1_whoWeAre_card1] = useState("");
-
   const [about1_whoWeAre_card2, set_about1_whoWeAre_card2] = useState("");
-
   const [about1_whoWeAre_card3, set_about1_whoWeAre_card3] = useState("");
 
   const aboutUs = [
@@ -33,6 +30,7 @@ function HeroSection({ data }) {
       aboutUs.map((item) => item.method(data[item.label]));
     }
   }, [data]);
+
   return (
     <Paper elevation="3" className="container">
       <Paper
@@ -43,7 +41,6 @@ function HeroSection({ data }) {
       >
         <h1>{about1_whoWeAre_card1}</h1>
       </Paper>
-
       <img className="ci-12" src="233_images/waterEnv.png" />
       <h2>{about1_whoWeAre_card2}</h2>
       <Paper elevation="5" className="about1-inner-container">
@@ -60,6 +57,4 @@ function HeroSection({ data }) {
       </Paper>
     </Paper>
   );
-}
-
-export default HeroSection;
+};
